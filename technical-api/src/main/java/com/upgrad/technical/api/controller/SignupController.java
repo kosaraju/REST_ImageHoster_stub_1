@@ -12,13 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.ZonedDateTime;
 import java.util.UUID;
 
 //Write the annotation which adds both the @Controller and @ResponseBody annotations.You no longer need to add @ResponseBody annotation on all the request mapping methods
 //
 //Write the annotation to map the url request of type '/'
 //
+@RestController
+@RequestMapping("/")
 public class SignupController {
 
     @Autowired
@@ -35,15 +36,15 @@ public class SignupController {
 
         userEntity.setUuid(UUID.randomUUID().toString());
         //set the FirstName of userEntity using signupUserRequest
-        //
+        userEntity.setFirstName(signupUserRequest.getFirstName());
         //set the LastName of userEntity using signupUserRequest
-        //
+        userEntity.setLastName(signupUserRequest.getLastName());
         //set the Email of userEntity using signupUserRequest
-        //
+        userEntity.setEmail(signupUserRequest.getEmailAddress());
         //set the Password of userEntity using signupUserRequest
-        //
+        userEntity.setPassword(signupUserRequest.getPassword());
         //set the MobilePhone of userEntity using signupUserRequest
-        //
+        userEntity.setMobilePhone(signupUserRequest.getMobileNumber());
         //Salt is actually used to encrypt and will be explained in next segment.As of now we are hard coding it
         userEntity.setSalt("1234abc");
         //Since this is user sign up so we are setting the role as "nonadmin"
